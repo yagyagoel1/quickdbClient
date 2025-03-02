@@ -5,6 +5,7 @@ import (
 	"net"
 
 	"github.com/spf13/cobra"
+	"github.com/yagyagoel1/quickdbClient/utils"
 )
 
 func Set(args []string) {
@@ -27,6 +28,13 @@ func Set(args []string) {
 		fmt.Println("Error:", err)
 		return
 	}
+	resp := utils.NewResp(conn)
+	value, err := resp.Read()
+	if err != nil {
+		fmt.Println("error while reading the response", err)
+
+	}
+	fmt.Println(value.Str)
 }
 
 var SetCmd = &cobra.Command{
