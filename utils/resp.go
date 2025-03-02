@@ -47,8 +47,6 @@ func (r *Resp) readLine() (line []byte, n int, err error) {
 
 		n += 1
 		line = append(line, b)
-		f, et := strconv.ParseInt(string(b), 10, 64)
-		fmt.Println("l", string(line), f, et)
 		if len(line) >= 2 && line[len(line)-2] == '\r' {
 			break
 		}
@@ -62,7 +60,6 @@ func (r *Resp) readInteger() (x int, n int, err error) {
 	if err != nil {
 		return 0, 0, err
 	}
-	fmt.Println("line", string(line), n)
 	i64, err := strconv.ParseInt(string(line), 10, 64)
 	if err != nil {
 		return 0, n, err
@@ -75,7 +72,6 @@ func (r *Resp) Read() (Value, error) {
 	if err != nil {
 		return Value{}, err
 	}
-	fmt.Println("type", string(_type))
 	switch string(_type) {
 	case ARRAY:
 		return r.readArray()
