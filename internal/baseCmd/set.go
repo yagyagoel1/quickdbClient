@@ -34,7 +34,7 @@ func Set(args []string) {
 		fmt.Println("error while reading the response", err)
 
 	}
-	fmt.Println(value.Str)
+	utils.PrintOutput(value)
 }
 
 var SetCmd = &cobra.Command{

@@ -4,6 +4,7 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
+	hashmapcmd "github.com/yagyagoel1/quickdbClient/internal/HashmapCmd"
 	basecmd "github.com/yagyagoel1/quickdbClient/internal/baseCmd"
 )
 
@@ -31,5 +32,7 @@ func init() {
 	rootCmd.AddCommand(basecmd.SetCmd)
 	rootCmd.AddCommand(basecmd.GetCmd)
 	rootCmd.AddCommand(basecmd.PingCmd)
+	rootCmd.AddCommand(hashmapcmd.HsetCmd)
+	rootCmd.AddCommand(hashmapcmd.HgetCmd)
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
