@@ -6,7 +6,9 @@ func PrintOutput(value Value) {
 	_type := value.Typ
 	switch _type {
 	case "array":
-		fmt.Println("array", value.Array)
+		for _, v := range value.Array {
+			PrintOutput(v)
+		}
 	case "bulk":
 		fmt.Println(value.Bulk)
 	case "string":

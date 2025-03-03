@@ -34,5 +34,6 @@ func init() {
 	rootCmd.AddCommand(basecmd.PingCmd)
 	rootCmd.AddCommand(hashmapcmd.HsetCmd)
 	rootCmd.AddCommand(hashmapcmd.HgetCmd)
+	rootCmd.AddCommand(hashmapcmd.HgetAllCmd)
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
