@@ -19,11 +19,8 @@ func Set(args []string) {
 		return
 	}
 	defer conn.Close()
-	fmt.Println(args[1])
 	data := []byte(fmt.Sprintf("*3\r\n$3\r\nSET\r\n$%d\r\n%s\r\n$%d\r\n%s\r\n", len(args[0]), args[0], len(args[1]), args[1]))
-	fmt.Println("da", data)
-	log, err := conn.Write(data)
-	fmt.Println("log", log)
+	_, err = conn.Write(data)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
