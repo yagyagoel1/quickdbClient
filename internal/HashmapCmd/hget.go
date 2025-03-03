@@ -14,6 +14,10 @@ func getInMap(args []string) {
 		fmt.Println("err while connecting", err)
 
 	}
+	if len(args) < 2 {
+		fmt.Println("The format is not correct expected two args Ex: HGET map key")
+		return
+	}
 	defer conn.Close()
 	data := fmt.Sprintf("*3\r\n$4\r\nHGET\r\n$%d\r\n%s\r\n$%d\r\n%s\r\n", len(args[0]), args[0], len(args[1]), args[1])
 	_, err = conn.Write([]byte(data))

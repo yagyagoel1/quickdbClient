@@ -14,6 +14,10 @@ func getAllValues(args []string) {
 		fmt.Println("err while connecting", err)
 
 	}
+	if len(args) < 1 {
+		fmt.Println("The format is not correct expected one args Ex: HGETALL map")
+		return
+	}
 	defer conn.Close()
 	data := fmt.Sprintf("*2\r\n$7\r\nHGETALL\r\n$%d\r\n%s\r\n", len(args[0]), args[0])
 	_, err = conn.Write([]byte(data))

@@ -14,6 +14,10 @@ func setInMap(args []string) {
 		fmt.Println("err while connecting", err)
 
 	}
+	if len(args) < 3 {
+		fmt.Println("The format is not correct expected THREE args Ex: HGET map key value")
+		return
+	}
 	defer conn.Close()
 	data := fmt.Sprintf("*4\r\n$4\r\nHSET\r\n$%d\r\n%s\r\n$%d\r\n%s\r\n$%d\r\n%s\r\n", len(args[0]), args[0], len(args[1]), args[1], len(args[2]), args[2])
 	_, err = conn.Write([]byte(data))
